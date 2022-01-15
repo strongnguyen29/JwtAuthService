@@ -1,0 +1,35 @@
+{
+    "name": "strongnguyen/jwt-auth-service",
+    "description": "Jwt auth for service",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "StrongNguyen",
+            "email": "strongnguyenapp@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "firebase/php-jwt": "^5.5",
+        "illuminate/contracts": "^8.0",
+        "illuminate/support": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "StrongNguyen\\JwtAuthService\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "StrongNguyen\\JwtAuthService\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "StrongNguyen\\JwtAuthService\\GatewayServiceProvider"
+            ]
+        }
+    }
+}

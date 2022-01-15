@@ -3,6 +3,7 @@
     "description": "Jwt auth for service",
     "type": "library",
     "license": "MIT",
+    "version": "1.0.0",
     "authors": [
         {
             "name": "StrongNguyen",
@@ -11,7 +12,7 @@
     ],
     "require": {
         "php": "^7.4",
-        "firebase/php-jwt": "^5.5",
+        "firebase/php-jwt": "^5.4",
         "illuminate/contracts": "^8.0",
         "illuminate/support": "^8.0"
     },

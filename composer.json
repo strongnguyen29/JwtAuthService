@@ -27,7 +27,7 @@
         },
         "laravel": {
             "providers": [
-                "StrongNguyen\\JwtAuthService\\GatewayServiceProvider"
+                "StrongNguyen\\JwtAuthService\\JwtAuthServiceProvider"
             ]
         }
     }

@@ -3,6 +3,7 @@
 namespace StrongNguyen\JwtAuthService;
 
 use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
@@ -35,10 +36,10 @@ class JwtAuthServiceProvider extends ServiceProvider
         Auth::viaRequest('customer', function (Request $request) {
 
             if ($token = $request->bearerToken()) {
-                $key = config('jwt-auth-service.customer_secret_key');
-                if (!$key) return null;
+                $publicKey = config('jwt-auth-service.customer_secret_key');
+                if (!$publicKey) return null;
 
-                $data = JWT::decode($token, $key, array('HS256'));
+                $data = JWT::decode($token, new Key($publicKey, 'RS256'));
                 $user = new stdClass();
                 $user->id = $data->user_id;
                 $user->appCode = $data->app_code ?? null;

@@ -23,7 +23,7 @@ class JwtAdminManager extends JwtAuthManager
      *
      * @return null
      */
-    public function createAdminToken($appCode, $userId = 1, $username = 'admin') {
+    public function createAdminToken($appCode = 'hl_cms', $userId = 1, $username = 'admin') {
         return $this->createToken([
             'app_code' => $appCode,
             'user_id' => $userId,

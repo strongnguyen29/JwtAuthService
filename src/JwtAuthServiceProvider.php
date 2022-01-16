@@ -20,7 +20,7 @@ class JwtAuthServiceProvider extends ServiceProvider
             return new JwtCustomerManager();
         });
 
-        $this->app->singleton('jwt-admin-customer', function() {
+        $this->app->singleton('jwt-auth-admin', function() {
             return new JwtAdminManager();
         });
     }

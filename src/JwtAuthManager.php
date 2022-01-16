@@ -79,6 +79,14 @@ abstract class JwtAuthManager
     }
 
     /**
+     * @return object|null
+     */
+    public function getData(): ?object
+    {
+        return $this->data;
+    }
+
+    /**
      * get Auth token
      *
      * @return null

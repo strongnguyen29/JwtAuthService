@@ -22,12 +22,7 @@ class JwtAuthMiddleware
             $key = config('jwt-auth-service.' . $keyName);
 
             if (!$key) {
-                return response()->json([
-                    'success' => false,
-                    'message' => "Chưa thiết lập {$keyName}",
-                    'data' => null,
-                    'code' => 500
-                ]);
+                abort(500, "Chưa thiết lập {$keyName}");
             }
 
             try {
@@ -38,11 +33,6 @@ class JwtAuthMiddleware
             }
         }
 
-        return response()->json([
-            'success' => false,
-            'message' => __('Không có quyền truy cập!'),
-            'data' => null,
-            'code' => 403
-        ]);
+        abort(403, 'Không có quyền truy cập!');
     }
 }

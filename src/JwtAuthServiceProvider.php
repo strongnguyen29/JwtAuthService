@@ -3,10 +3,8 @@
 namespace StrongNguyen\JwtAuthService;
 
 use Firebase\JWT\JWT;
-use Illuminate\Auth\RequestGuard;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
-use Laravel\Sanctum\Guard;
 
 class JwtAuthServiceProvider extends ServiceProvider
 {

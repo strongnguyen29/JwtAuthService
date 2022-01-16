@@ -3,8 +3,10 @@
 namespace StrongNguyen\JwtAuthService;
 
 use Firebase\JWT\JWT;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
+use stdClass;
 
 class JwtAuthServiceProvider extends ServiceProvider
 {

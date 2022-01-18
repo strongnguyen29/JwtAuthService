@@ -31,7 +31,7 @@ abstract class JwtAuthManager
         $this->token = request()->bearerToken();
 
         if ($this->token && $this->getSecretKey()) {
-            Log::debug(self::class . '@handle: BEFORE token decode', ['$token' => $this->token]);
+            Log::debug(self::class . '@handle: BEFORE token decode', ['$token' => $this->token, $this->getConfigSecretKey()]);
             try {
                 $this->data = JWT::decode($this->token, $this->getSecretKey(), array('HS256'));
                 Log::debug(self::class . '@handle: token decode SUCCESS', [$this->data]);

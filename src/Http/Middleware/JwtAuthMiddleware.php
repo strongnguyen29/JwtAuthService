@@ -19,13 +19,10 @@ class JwtAuthMiddleware
     public function handle($request, Closure $next, $role)
     {
         if ($request->bearerToken()) {
-            switch($role) {
-                case 'admin':
-                    if (JwtAdmin::isValid()) return $next($request);
-                    break;
-                case 'customer':
-                    if (JwtCustomer::isValid()) return $next($request);
-                    break;
+            if ($role == 'admin' && JwtAdmin::isValid()) {
+                return $next($request);
+            } elseif ($role == 'customer' && JwtCustomer::isValid()) {
+                return $next($request);
             }
         }
 

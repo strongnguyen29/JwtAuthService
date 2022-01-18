@@ -91,7 +91,7 @@ abstract class JwtAuthManager
      *
      * @return null
      */
-    public function createToken(array $payload) {
+    protected function createToken(array $payload) {
         $now = Carbon::now();
         $data = array_merge([
             [

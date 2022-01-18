@@ -31,19 +31,28 @@ abstract class JwtAuthManager
         $this->token = request()->bearerToken();
 
         if ($this->token && $this->getSecretKey()) {
+            Log::debug(self::class . '@handle: BEFORE token decode', ['$token' => $this->token]);
             try {
                 $this->data = JWT::decode($this->token, $this->getSecretKey(), array('HS256'));
-                Log::debug(JWTAuthManager::class . '@handle: token decode true', ['$token' => $this->token, $this->data]);
+                Log::debug(self::class . '@handle: token decode SUCCESS', [$this->data]);
             } catch (\Throwable $e) {
-                Log::debug(JWTAuthManager::class . '@handle: token decode false, error: ' . $e->getMessage());
+                Log::debug(self::class . '@handle: token decode ERROR: ' . $e->getMessage());
             }
         }
     }
 
+    /**
+     * @return string
+     */
     abstract protected function getConfigSecretKey() : string;
 
+    /**
+     * @return string
+     */
     protected function getSecretKey() : string {
-        return config("jwt-auth-service.{$this->getConfigSecretKey()}");
+        $key = config("jwt-auth-service.{$this->getConfigSecretKey()}");
+        if (!$key) abort(500, 'Chưa cấu hình ' . $this->getConfigSecretKey());
+        return $key;
     }
 
     /**

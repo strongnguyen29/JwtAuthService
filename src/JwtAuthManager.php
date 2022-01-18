@@ -93,7 +93,7 @@ abstract class JwtAuthManager
      */
     protected function createToken(array $payload) {
         $now = Carbon::now();
-        $data = array_merge([
+        $data = array_merge(
             [
                 'jti' => Str::uuid(),
                 'iss' => url(''),
@@ -102,7 +102,7 @@ abstract class JwtAuthManager
                 'from' => url(''),
             ],
             $payload
-        ]);
+        );
         return JWT::encode($data, $this->getSecretKey());
     }
 }

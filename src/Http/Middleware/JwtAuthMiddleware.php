@@ -3,9 +3,9 @@
 namespace StrongNguyen\JwtAuthService\Http\Middleware;
 
 use Closure;
-use Firebase\JWT\JWT;
-use Illuminate\Support\Facades\Log;
 use StrongNguyen\JwtAuthService\Facades\JwtCustomer;
+use StrongNguyen\JwtAuthService\Facades\JwtAdmin;
+
 
 class JwtAuthMiddleware
 {
